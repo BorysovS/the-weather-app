@@ -9,10 +9,13 @@ export const DailyWeatherList = () => {
 
   return (
     <section>
-      <h2 className={style.visually_hidden}>Daily Weather</h2>
+      <h2 className={style.visually_hidden}></h2>
+      {dailyWeather && (
+        <p className={style.daily_weather_text}>5-day weather forecast</p>
+      )}
       <ul>
         {dailyWeather &&
-          dailyWeather.slice(1).map((dayWeather, index) => {
+          dailyWeather.slice(1, -2).map((dayWeather, index) => {
             return (
               <DailyWeatherItem
                 key={index}

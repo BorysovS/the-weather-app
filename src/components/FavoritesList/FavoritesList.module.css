@@ -1,5 +1,6 @@
 .favorites_list_title {
-    margin-bottom: 20px;
+    
+    margin-right: 30px;
     
 }
 
@@ -14,7 +15,13 @@
     opacity: 0.5;
 }
 
-@media only screen and (min-width: 1158px) {
+.title_wrapper {
+    display: flex;
+align-items: center;
+margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 1200px) {
 .favorites_list {
      
         flex-wrap: nowrap;
