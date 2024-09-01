@@ -1,6 +1,6 @@
 export const selectIsError = (state) => state.weather.error;
 
-export const selectIsLoading = (state) => state.weather.status;
+export const selectIsLoading = (state) => state.weather.isLoading;
 
 export const selectCurrentWeather = (state) => state.weather.currentWeather;
 

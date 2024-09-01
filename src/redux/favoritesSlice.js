@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 const favoritesSlice = createSlice({
   name: "favorites",
@@ -15,6 +16,7 @@ const favoritesSlice = createSlice({
         (city) => city.city !== action.payload
       );
       localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      toast.success("Remove favorites city");
       return updatedFavorites;
     },
   },

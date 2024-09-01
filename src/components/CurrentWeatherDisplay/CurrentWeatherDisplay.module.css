@@ -1,5 +1,6 @@
 .temp_wrapper {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
@@ -7,10 +8,7 @@
     font-weight: bold;
     font-size: 28px;
 }
-/* 
-.current_weather_container {
-    width: 40%;
-} */
+
 
 .city_text {
 font-weight: bold;
@@ -23,6 +21,7 @@ font-size: 20px;
 .weather_data_list {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 24px;
 }
 
 .weather_list_item {
@@ -30,4 +29,47 @@ font-size: 20px;
     flex-direction: column;
     align-items: center;
     width: 60px;
+}
+
+.add_favorites_btn {
+    display: block;
+    min-width: 120px;
+    margin-left: auto;
+    margin-right: auto;
+        font-family: inherit;
+        height: 32px;
+        background-color: #4cc2f8;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background-color 250ms ease-out;
+}
+
+.add_favorites_btn:hover,
+.add_favorites_btn:focus {
+    background-color: #2e89b3;
+}
+
+.image_weather_icon {
+    margin-left: auto;
+        margin-right: auto;
+        display: block;
+}
+
+.weather_descr_text {
+    text-align: center;
+        opacity: 0.7;
+        font-size: 18px;
+        margin-bottom: 16px;
+}
+
+.icon_weather_text {
+    font-size: 12px;
+        opacity: 0.7;
+}
+
+.icon_weather_data {
+    font-weight: 700;
+        font-size: 16px;
 }

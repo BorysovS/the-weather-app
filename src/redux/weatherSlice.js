@@ -12,16 +12,16 @@ const weatherSlice = createSlice({
     lon: null,
     isFavorites: false,
     error: null,
-    status: "idle",
+    isLoading: false,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchWeather.pending, (state) => {
-        state.status = "loading";
+        state.isLoading = true;
       })
       .addCase(fetchWeather.fulfilled, (state, action) => {
-        state.status = "succeeded";
+        state.isLoading = false;
         const { weatherData, cityName, country } = action.payload;
 
         state.cityName = cityName;
@@ -55,7 +55,7 @@ const weatherSlice = createSlice({
         }));
       })
       .addCase(fetchWeather.rejected, (state, action) => {
-        state.status = "failed";
+        state.isLoading = false;
         state.error = action.error.message;
       });
   },

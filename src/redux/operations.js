@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 const baseUrl = import.meta.env.VITE_SERVER_BASE_URL;
@@ -22,7 +23,6 @@ export const fetchWeather = createAsyncThunk(
         },
       });
       const data = response.data;
-      console.log("searchCityCoord", data);
 
       if (data.length > 0) {
         const weatherResp = await weatherApi.get("/data/3.0/onecall", {
@@ -35,15 +35,16 @@ export const fetchWeather = createAsyncThunk(
           },
         });
         const weatherData = weatherResp.data;
-        console.log("weatherData", weatherData);
         return {
           weatherData,
           cityName: data[0].name,
           country: data[0].country,
         };
       }
+      toast.error("Incorrect city name");
+      return rejectWithValue("Incorrect city name");
     } catch (error) {
-      console.error("Error fetching coordinates:", error);
+      toast.error("Failed to fetch coordinates");
       return rejectWithValue("Failed to fetch coordinates");
     }
   }
@@ -61,10 +62,8 @@ export const fetchWeatherByCityName = createAsyncThunk(
         },
       });
       const data = response.data;
-      console.log("fetchWeatherByCityName", data);
       return data;
     } catch (error) {
-      console.error("Error fetching coordinates:", error);
       return rejectWithValue("Failed to fetch coordinates");
     }
   }

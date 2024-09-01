@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchWeather } from "../../redux/operations";
 import { removeFavorite } from "../../redux/favoritesSlice";
 
+import styles from "./FavoritesListItem.module.css";
+
 export const FavoritesListItem = ({ favoriteCity }) => {
   const [showWeather, setShowWeather] = useState(false);
   const dispatch = useDispatch();
@@ -20,16 +22,22 @@ export const FavoritesListItem = ({ favoriteCity }) => {
   };
 
   return (
-    <li>
-      <p>{favoriteCity.city}</p>
-      <button onClick={handleShowWeather}>Show Current Weather</button>
-      {/* {showWeather && weather && (
-        <>
-          <p>Temperature: {weather.temp}</p>
-          <p>Weather description: {weather.weather_description}</p>
-        </>
-      )} */}
-      <button onClick={handleRemoveFromFavorites}>Remove</button>
+    <li className={styles.favorites_list_item}>
+      <p className={styles.city_name}>{favoriteCity.city}</p>
+      <button
+        className={styles.favorites_item_btn}
+        onClick={handleShowWeather}
+        type="button"
+      >
+        Show Weather
+      </button>
+      <button
+        className={styles.favorites_item_btn}
+        onClick={handleRemoveFromFavorites}
+        type="button"
+      >
+        Remove
+      </button>
     </li>
   );
 };

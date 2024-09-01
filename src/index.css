@@ -23,9 +23,19 @@ ul, ol {
   padding: 0;
 }
 
+
+
 body {
+  /* height: 100vh; */
+
     font-family: "Inter", sans-serif;
         margin: 0;
-        background: linear-gradient(to bottom right, #113390, #0a0133);
+        /* background: linear-gradient(to bottom right, #113390, #0a0133); */
+}
+
+html {
+min-height: 100vh;
+    background: linear-gradient(to bottom right, #113390, #0a0133);
+    background-repeat: no-repeat;
 }
 

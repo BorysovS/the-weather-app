@@ -1,0 +1,23 @@
+.favorites_list_title {
+    margin-bottom: 20px;
+    
+}
+
+.favorites_list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.favorites_list_descr {
+    opacity: 0.5;
+}
+
+@media only screen and (min-width: 1158px) {
+.favorites_list {
+     
+        flex-wrap: nowrap;
+
+    }
+}

@@ -15,8 +15,14 @@ const SearchBar = () => {
     }
   };
 
+  const handleKeyPress = (evt) => {
+    if (evt.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   return (
-    <header>
+    <header className={styles.header_section}>
       <div className={styles.container}>
         <div className={styles.title_wrapper}>
           <h1 className={styles.title}>The Weather App</h1>
@@ -34,9 +40,14 @@ const SearchBar = () => {
             type="text"
             value={city}
             onChange={(evt) => setCity(evt.target.value)}
+            onKeyDown={handleKeyPress}
             placeholder="Enter city name"
           />
-          <button className={styles.search_btn} onClick={handleSearch}>
+          <button
+            className={styles.search_btn}
+            onClick={handleSearch}
+            type="submit"
+          >
             Search
           </button>
         </div>

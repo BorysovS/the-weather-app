@@ -1,9 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectCity,
-  selectCurrentWeather,
-  selectFavorites,
-} from "../../redux/selectors";
+import { selectCurrentWeather, selectFavorites } from "../../redux/selectors";
 import { addFavorite } from "../../redux/favoritesSlice";
 import styles from "./CurrentWeatherDisplay.module.css";
 import sprite from "../../assets/icons.svg";
@@ -13,9 +9,7 @@ export const CurrentWeatherDisplay = () => {
   const dispatch = useDispatch();
   const {
     weather_icon,
-    feels_like,
     humidity,
-    pressure,
     sunrise,
     sunset,
     temp,
@@ -23,14 +17,10 @@ export const CurrentWeatherDisplay = () => {
     wind_speed,
   } = currentWeather || {};
 
-  console.log("currentWeather", currentWeather);
-
-  //   const city = useSelector(selectCity);
   const { lat, lon, cityName, country } = useSelector((state) => state.weather);
   const favorites = useSelector(selectFavorites);
 
   const isFavorite = favorites.some((fav) => fav.city === cityName);
-  console.log("cityName country", cityName, country);
 
   const handleAddToFavorites = () => {
     const favoriteCity = {
@@ -52,14 +42,19 @@ export const CurrentWeatherDisplay = () => {
           <div className={styles.temp_wrapper}>
             <p className={styles.temp_text}>{temp}&deg;C</p>
             <div>
-              <p className={styles.city_text}>
+              <h2 className={styles.city_text}>
                 {cityName},{country}
-              </p>
+              </h2>
               <p>{formattedDate}</p>
             </div>
           </div>
-          <img src={weather_icon} alt="weather icon" width="150px" />
-          <p>{weather_description}</p>
+          <img
+            src={weather_icon}
+            alt="weather icon"
+            width="150px"
+            className={styles.image_weather_icon}
+          />
+          <p className={styles.weather_descr_text}>{weather_description}</p>
           <ul className={styles.weather_data_list}>
             <li className={styles.weather_list_item}>
               <svg
@@ -70,7 +65,8 @@ export const CurrentWeatherDisplay = () => {
               >
                 <use href={sprite + "#icon-humidity"}></use>
               </svg>
-              <p>{humidity}%</p>
+              <p className={styles.icon_weather_text}>humidity</p>
+              <p className={styles.icon_weather_data}>{humidity}%</p>
             </li>
             <li className={styles.weather_list_item}>
               <svg
@@ -81,7 +77,8 @@ export const CurrentWeatherDisplay = () => {
               >
                 <use href={sprite + "#icon-wind"}></use>
               </svg>
-              <p>{wind_speed} m/s</p>
+              <p className={styles.icon_weather_text}>wind</p>
+              <p className={styles.icon_weather_data}>{wind_speed} m/s</p>
             </li>
             <li className={styles.weather_list_item}>
               <svg
@@ -92,7 +89,8 @@ export const CurrentWeatherDisplay = () => {
               >
                 <use href={sprite + "#icon-sunrise"}></use>
               </svg>
-              <p>{sunrise}</p>
+              <p className={styles.icon_weather_text}>sunrise</p>
+              <p className={styles.icon_weather_data}>{sunrise}</p>
             </li>
             <li className={styles.weather_list_item}>
               <svg
@@ -103,11 +101,16 @@ export const CurrentWeatherDisplay = () => {
               >
                 <use href={sprite + "#icon-sunset"}></use>
               </svg>
-              <p>{sunset}</p>
+              <p className={styles.icon_weather_text}>sunset</p>
+              <p className={styles.icon_weather_data}>{sunset}</p>
             </li>
           </ul>
           {!isFavorite && (
-            <button type="button" onClick={handleAddToFavorites}>
+            <button
+              type="button"
+              onClick={handleAddToFavorites}
+              className={styles.add_favorites_btn}
+            >
               Add to Favorites
             </button>
           )}

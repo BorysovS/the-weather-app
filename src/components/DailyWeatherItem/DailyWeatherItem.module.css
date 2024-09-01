@@ -1,3 +1,23 @@
 .item_wrapper {
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+
+.item_wrapper_data {
+font-size: 14px;
+}
+
+.item_wrapper_temp {
+    display: flex;
+    justify-content: space-between;
+font-size: 14px;
+}
+
+.weather_item_descr {
+    max-width: 70px;
+    font-size: 14px;
+        text-align: center;
+        opacity: 0.6;
 }
