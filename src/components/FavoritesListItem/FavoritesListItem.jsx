@@ -24,20 +24,22 @@ export const FavoritesListItem = ({ favoriteCity }) => {
   return (
     <li className={styles.favorites_list_item}>
       <p className={styles.city_name}>{favoriteCity.city}</p>
-      <button
-        className={styles.favorites_item_btn}
-        onClick={handleShowWeather}
-        type="button"
-      >
-        Show Weather
-      </button>
-      <button
-        className={styles.favorites_item_btn}
-        onClick={handleRemoveFromFavorites}
-        type="button"
-      >
-        Remove
-      </button>
+      <div className={styles.btn_wrapper}>
+        <button
+          className={styles.favorites_item_btn}
+          onClick={handleShowWeather}
+          type="button"
+        >
+          Show Weather
+        </button>
+        <button
+          className={styles.favorites_item_btn}
+          onClick={handleRemoveFromFavorites}
+          type="button"
+        >
+          Remove
+        </button>
+      </div>
     </li>
   );
 };
